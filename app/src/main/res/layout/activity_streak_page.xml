@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/background_color"
+    tools:context=".StreakPage">
+
+    <!-- EditText for adding subject name -->
+    <EditText
+        android:id="@+id/idEdtSubjectName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:hint="Enter Subject Name"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_background"
+        android:textColor="@color/text_color"
+        android:textSize="16sp" />
+
+    <!-- EditText for adding content -->
+    <EditText
+        android:id="@+id/idEdtContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/idEdtSubjectName"
+        android:layout_marginTop="10dp"
+        android:hint="Enter Content"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_background"
+        android:textColor="@color/text_color"
+        android:textSize="16sp" />
+
+    <!-- EditText for adding time in minutes -->
+    <EditText
+        android:id="@+id/idEdtTimeInMinutes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/idEdtContent"
+        android:layout_marginTop="10dp"
+        android:hint="Time studied in minutes"
+        android:inputType="number"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_background"
+        android:textColor="@color/text_color"
+        android:textSize="16sp" />
+
+    <!-- Button for adding data to Firebase -->
+    <Button
+        android:id="@+id/idBtnSendData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/idEdtTimeInMinutes"
+        android:layout_marginTop="20dp"
+        android:text="Continue Streak"
+        android:textAllCaps="false"
+        android:background="@drawable/button_background"
+        android:textColor="@color/button_text_color"
+        android:textSize="18sp"
+        android:padding="12dp" />
+</RelativeLayout>

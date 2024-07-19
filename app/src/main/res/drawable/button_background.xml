@@ -1,0 +1,21 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <shape>
+            <solid android:color="@color/button_color_pressed"/>
+            <corners android:radius="8dp"/>
+        </shape>
+    </item>
+    <item android:state_focused="true">
+        <shape>
+            <solid android:color="@color/button_color_focused"/>
+            <corners android:radius="8dp"/>
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <solid android:color="@color/button_color"/>
+            <corners android:radius="8dp"/>
+        </shape>
+    </item>
+</selector>
+

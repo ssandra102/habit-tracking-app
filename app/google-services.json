@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "871927060022",
+    "project_id": "ichlerne-1042d",
+    "storage_bucket": "ichlerne-1042d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:871927060022:android:a03daa5f33859b5167ea97",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNHIbgJb3NFgbRnLjJ-V3fUbT6JBsDHmw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
