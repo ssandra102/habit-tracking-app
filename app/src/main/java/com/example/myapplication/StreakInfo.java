@@ -1,14 +1,15 @@
 package com.example.myapplication;
 
-import java.util.Date;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class StreakInfo {
     private String SubjectName;
     private String Content;
     private String TimeInMinutes;
-    private Date CurrentTime;
+    private String CurrentTime;
 
-    // an empty constructor is required when using Firebase Realtime Database.
     public StreakInfo() {
     }
 
@@ -36,11 +37,12 @@ public class StreakInfo {
         this.TimeInMinutes = TimeInMinutes;
     }
 
-    public Date getCurrentTime() {
+    public String getCurrentTime() {
         return CurrentTime;
     }
 
-    public void setCurrentTime(Date CurrentTime) {
+    public void setCurrentTime(String CurrentTime) {
         this.CurrentTime = CurrentTime;
     }
+
 }

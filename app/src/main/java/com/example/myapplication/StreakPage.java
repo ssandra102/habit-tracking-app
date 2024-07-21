@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -16,7 +17,7 @@ import java.util.List;
 public class StreakPage extends AppCompatActivity {
 
     private EditText subjectNameEdt, contentEdt, timeInMinutesEdt;
-    private Button sendDatabtn;
+    private Button sendDatabtn, viewPerformance;
     Date d1 = new Date();
     StreakInfo streakInfo;
     private DatabaseHelper dbHelper;
@@ -33,6 +34,7 @@ public class StreakPage extends AppCompatActivity {
         contentEdt = findViewById(R.id.idEdtContent);
         timeInMinutesEdt = findViewById(R.id.idEdtTimeInMinutes);
         sendDatabtn = findViewById(R.id.idBtnSendData);
+        viewPerformance = (Button) findViewById(R.id.idBtnViewPerformance);
 
         // adding on click listener for our button.
         sendDatabtn.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +52,14 @@ public class StreakPage extends AppCompatActivity {
                     addDataToSQLite(subjectName, content, timeInMinutes, currentTime);
 
                 }
+            }
+        });
+
+
+        viewPerformance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openNewActivity();
             }
         });
     }
@@ -71,6 +81,11 @@ public class StreakPage extends AppCompatActivity {
                     ", Time: " + streakInfo.getTimeInMinutes() +
                     ", Current Time: " + streakInfo.getCurrentTime());
         }
+    }
+
+    public void openNewActivity(){
+        Intent intent = new Intent(this, performance.class);
+        startActivity(intent);
     }
 
 

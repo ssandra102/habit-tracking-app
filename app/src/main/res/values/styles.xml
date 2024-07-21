@@ -1,12 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="DemoTheme" parent="Theme.AppCompat.Light.NoActionBar">
-
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/color_Primary</item>
         <item name="colorAccent">@color/color_Accent</item>
-
-        <!-- Defining that new color in ColorPrimaryDark -->
         <item name="colorPrimaryDark">@color/color_PrimaryDark</item>
     </style>
+
+    <!-- Base application theme -->
+    <style name="ParentTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="MyTheme" parent="ParentTheme">
+        <item name="actionButtonStyle">@style/MyActionButtonStyle</item>
+    </style>
+
+
+    <style name="MyActionButtonStyle" parent="Widget.AppCompat.ActionButton">
+        <item name="android:minWidth">28dip</item>
+    </style>
+
+
+    <style name="ActionBarButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@null</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+    </style>
+
+
+    <style name="ActionBarButtonWhite" parent="@style/ActionBarButton">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+
+    <style name="ActionBarButtonOffWhite" parent="@style/ActionBarButton">
+        <item name="android:textColor">@color/off_white</item>
+    </style>
+
 </resources>

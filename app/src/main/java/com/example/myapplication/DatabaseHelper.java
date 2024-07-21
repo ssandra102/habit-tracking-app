@@ -7,8 +7,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "userStreakInfo.db";
@@ -71,8 +77,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 streakInfo.setSubjectName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SUBJECT_NAME)));
                 streakInfo.setContent(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONTENT)));
                 streakInfo.setTimeInMinutes(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIME_IN_MINUTES)));
-//                streakInfo.setCurrentTime(cursor.getDate(cursor.getColumnIndexOrThrow(COLUMN_CURRENT_TIME)));
-                streakInfo.setCurrentTime(null);
+                streakInfo.setCurrentTime(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CURRENT_TIME)));
+//                streakInfo.setCurrentTime(null);
                 streakInfoList.add(streakInfo);
             } while (cursor.moveToNext());
         }
@@ -82,5 +88,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return streakInfoList;
     }
+
+    public List<StreakInfo> getTodayStreakInfo() {
+        List<StreakInfo> streakInfoList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy", Locale.ENGLISH);
+        String todayDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+
+        String selectQuery = "SELECT * FROM " + TABLE_NAME;
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                String dateString = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CURRENT_TIME));
+                try {
+                    Date date = sdf.parse(dateString);
+                    String recordDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(date);
+                    if (recordDate.equals(todayDate)) {
+                        StreakInfo streakInfo = new StreakInfo();
+//                        streakInfo.setId(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)));
+                        streakInfo.setSubjectName(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SUBJECT_NAME)));
+                        streakInfo.setContent(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONTENT)));
+                        streakInfo.setTimeInMinutes(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIME_IN_MINUTES)));
+                        streakInfo.setCurrentTime(String.valueOf(date));
+                        streakInfoList.add(streakInfo);
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+
+        return streakInfoList;
+    }
+
 }
 

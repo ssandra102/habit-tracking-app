@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     android:padding="16dp"
     android:background="@color/background_color"
     tools:context=".StreakPage">
@@ -52,7 +53,7 @@
         android:textColor="@color/text_color"
         android:textSize="16sp" />
 
-    <!-- Button for adding data to Firebase -->
+    <!-- Button for adding data to SQLlite DB -->
     <Button
         android:id="@+id/idBtnSendData"
         android:layout_width="match_parent"
@@ -65,4 +66,17 @@
         android:textColor="@color/button_text_color"
         android:textSize="18sp"
         android:padding="12dp" />
+
+    <!-- Button for viewing user performance -->
+    <Button
+        android:id="@+id/idBtnViewPerformance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/idBtnSendData"
+        android:background="@drawable/button_background"
+        android:layout_marginTop="20dp"
+        android:text="View Performance"
+        android:textAllCaps="false"
+        android:textColor="@color/button_text_color"
+        android:textSize="18sp" />
 </RelativeLayout>
